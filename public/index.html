@@ -1,0 +1,138 @@
+ <!-- !Code By Silent_Coder AKA SilentxKnight -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#00f2ff" />
+    <title>Hi!| Fund Manager</title>
+
+    <!-- *css files -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- *firebase codesnippet -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+     <!-- *firebase SDKs -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+    
+
+
+
+    <!-- *firebase UI -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyB8b8vfupnHf20LEuZhQxYbhcfWBj5Qr0E",
+        authDomain: "fund-manager-fcee0.firebaseapp.com",
+        projectId: "fund-manager-fcee0",
+        storageBucket: "fund-manager-fcee0.appspot.com",
+        messagingSenderId: "665599068246",
+        appId: "1:665599068246:web:2726173509e25b443993f7",
+        measurementId: "G-909N6TSJ1N",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+    <!-- *end -->
+
+
+    <!--  *checking user logged in or not -->
+      <script>
+        firebase.auth().onAuthStateChanged(firebaseuser=>{
+    if(firebaseuser){
+        // document.getElementsByTagName("body")[0].style.display="block";
+      console.log(firebaseUser);
+
+      window.location.href="/pages/mainApp.html";
+
+        
+    }else{
+        console.log('not logged in');
+        
+        // ?redirecting user to sign in form
+
+        window.location.href="/pages/signinForm.html";
+    
+    
+    }
+
+    });
+      </script>
+
+
+    <!-- end -->
+
+
+
+
+
+
+    <!-- *js files -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    ></script>
+
+
+
+    <script src="js/app.js" defer></script>
+    
+  </head>
+
+  <body>
+    <button id="signout" class="btn btn-danger" onclick="googleSignOut()">SignOut</button> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer style="background-color: #000; padding: 20px; text-align: center;">
+       <h4 style="background-color: #000; color: #fff; font-size: 16px;">All &#169; Copyrights Reserved To <br> <span style="color: red;"><strong>Fund Manager</strong></span></h2>
+    </footer>
+
+
+  </body>
+</html>
