@@ -1,121 +1,88 @@
 /* !<!-- !Code By Silent_Coder AKA SilentxKnight --> */
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-::selection{
-    background-color: yellow;
-    color: rgb(0, 0, 0);
+::selection {
+  background-color: yellow;
+  color: rgb(0, 0, 0);
 }
 
-:root{
-    --background:rgb(248, 250, 252);
+:root {
+  --background: rgb(248, 250, 252);
 }
 
-
-body{
-    background-color:var(--background);
+body {
+  background-color: var(--background);
 }
 
-.ph-view{
-    display:none;
-
+.ph-view {
+  display: none;
 }
-.pc-view{
-    display:block;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.white-box{
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 1 rgba(0, 0, 0, 0);
-
+.pc-view {
+  display: block;
 }
 
-
-
-h3{
-    
+.white-box {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 1 rgba(0, 0, 0, 0);
 }
 
-.branding{
-    background-color: #fff;
-    padding: 10px 20px;
-    border-bottom: .1px solid rgba(0, 0, 0, 0.226);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+h3 {
 }
 
-
-
-
-
-
-.dash-menu{
-    padding: 10px;
-    height: 100% !important;
+.branding {
+  background-color: #fff;
+  padding: 10px 20px;
+  border-bottom: 0.1px solid rgba(0, 0, 0, 0.226);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.dash-options{
-    background-color: var(--background);
-    padding-left:0px ;
+.dash-menu {
+  padding: 10px;
+  height: 100% !important;
 }
 
+.dash-options {
+  background-color: var(--background);
+  padding-left: 0px;
+}
 
-.main-dash{
-    background-color: black;
+.main-dash {
+  background-color: black;
 }
 
 /* *Total section */
-.Tfunds{
-    padding: 20px;
+.Tfunds {
+  padding: 20px;
 }
 /* end */
 
 /* *Savings section */
-.Sfunds{
-    padding: 20px;
+.Sfunds {
+  padding: 20px;
 }
 /* end */
 
 /* *expenses section */
-.Efunds{
-    padding: 20px;
+.Efunds {
+  padding: 20px;
 }
 /* end */
 
 /* *Expenses history tab */
 
-.expense-history{
-    ;
+.expense-history {
 }
 
 /* end */
 
-
-.wishlist{
-    
-    border: 2px solid #000;
-
+.wishlist {
+  border: 2px solid #000;
 }
-
-
 
 /* *#####################///////// Mobile View //////////############### */
 /* !mobile view */
@@ -124,166 +91,142 @@ h3{
     display: none;
 } */
 
-
-.side-nav-contents{
-    height: 100%;
-    width: 0px;
-    position: fixed;
-    z-index: 1999;
-    top: 0;
-    left: 0;
-    background-color: #000;
-    overflow: hidden;
-    transition: .2s;
-    padding-top: 60px;
+.side-nav-contents {
+  height: 100%;
+  width: 0px;
+  position: fixed;
+  z-index: 1999;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  overflow: hidden;
+  transition: 0.2s;
+  padding-top: 60px;
 }
 
-.side-nav-contents a{
-    padding: 8px 8px 8px 8px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #ffff;
-    display: block;
-    transition: 0.3s;
+.side-nav-contents a {
+  padding: 8px 8px 8px 8px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffff;
+  display: block;
+  transition: 0.3s;
 }
-.side-nav-contents button{
-        margin: 10px;
-}
-
-.side-nav-contents .close-btn{
-    position: absolute;
-    top: 0;
-    right: 30px;
-    font-size: 36px;
-    margin-left: 50px;
-    
+.side-nav-contents button {
+  margin: 10px;
 }
 
+.side-nav-contents .close-btn {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  font-size: 36px;
+  margin-left: 50px;
+}
 
 /* *profile image */
 
-.profile-image{
-    border-radius: 50% !important;
-    border: 3px solid #fff;
-    height: 70px !important; 
-
+.profile-image {
+  border-radius: 50% !important;
+  border: 3px solid #fff;
+  height: 70px !important;
 }
 
-.side-nav-contents .profile-image img{
-    text-align: center !important;
-    margin: auto !important;
-     
-
+.side-nav-contents .profile-image img {
+  text-align: center !important;
+  margin: auto !important;
 }
 
 /* end */
 
-
-
-
-
-
-
-
-
-.nav-bar{
-    padding: 10px;
-    text-align: center;
-    /* border-bottom: 2px solid #000; */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.212), 0 6px 20px 0px rgba(0, 0, 0, 0.055);
-  
-  
+.nav-bar {
+  padding: 10px;
+  text-align: center;
+  /* border-bottom: 2px solid #000; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.212),
+    0 6px 20px 0px rgba(0, 0, 0, 0.055);
 }
 
-.nav-bar a{
-    /* margin-left:auto;
+.nav-bar a {
+  /* margin-left:auto;
     margin-right: auto; */
-
 }
-.side-menu{
-    font-size: 50px !important;
-}
-
-#brand a{
-    text-decoration: none;
-    color: #000;
-    font-size: 26px;
+.side-menu {
+  font-size: 50px !important;
 }
 
-.Tfunds-ph{
-    margin:10px 5px;
-    border-radius: 5px;
-    text-align: center;
-    padding: 20px 5px ;
-    background-color: rgb(5, 255, 230);
-    /* border: 1px solid #000; */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.336), 0 6px 20px 0px rgba(0, 0, 0, 0.055);
-    
-}
-.Sfunds-ph{
-    text-align: center;
-    border-radius: 5px;
-    margin:10px 5px;
-    padding: 20px 5px ;
-    background-color: rgb(11, 247, 223);
-    /* border: 1px solid #000; */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.336), 0 6px 20px 0px rgba(0, 0, 0, 0.055);
-}
-.Efunds-ph{
-    text-align: center;
-    border-radius: 5px;
-    margin:10px 5px;
-    padding: 20px 5px ;
-    background-color: rgb(9, 255, 230);
-    /* border: 1px solid #000; */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.336), 5px 6px 20px 8px rgba(0, 0, 0, 0.055);
+#brand a {
+  text-decoration: none;
+  color: #000;
+  font-size: 26px;
 }
 
-.expense-history-ph{
-    text-align: center;
-    margin:10px 8px;
-    padding: 20px 10px ;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.336), 0 6px 20px 0px rgba(0, 0, 0, 0.055);
-    height: 70vh;
-    overflow: visible;
+.Tfunds-ph {
+  margin: 10px 5px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px 5px;
+  background-color: rgb(5, 255, 230);
+  /* border: 1px solid #000; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.336),
+    0 6px 20px 0px rgba(0, 0, 0, 0.055);
+}
+.Sfunds-ph {
+  text-align: center;
+  border-radius: 5px;
+  margin: 10px 5px;
+  padding: 20px 5px;
+  background-color: rgb(11, 247, 223);
+  /* border: 1px solid #000; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.336),
+    0 6px 20px 0px rgba(0, 0, 0, 0.055);
+}
+.Efunds-ph {
+  text-align: center;
+  border-radius: 5px;
+  margin: 10px 5px;
+  padding: 20px 5px;
+  background-color: rgb(9, 255, 230);
+  /* border: 1px solid #000; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.336),
+    5px 6px 20px 8px rgba(0, 0, 0, 0.055);
 }
 
-.expense-history-ph #scroll-v{
-
-    height: 50vh;
-    overflow: scroll;
-
+.expense-history-ph {
+  text-align: center;
+  margin: 10px 8px;
+  padding: 20px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.336),
+    0 6px 20px 0px rgba(0, 0, 0, 0.055);
+  height: 70vh;
+  overflow: visible;
 }
 
-
-.wishlist-ph{
-    text-align: center;
-    margin:10px 8px;
-    padding: 20px 10px ;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.336), 0 6px 20px 0px rgba(0, 0, 0, 0.055);
-    height: 70vh;
-    overflow: visible;
-}
-.wishlist-ph #scroll-v{
-
-    height: 50vh;
-    overflow: scroll;
-
+.expense-history-ph #scroll-v {
+  height: 50vh;
+  overflow: scroll;
 }
 
-
+.wishlist-ph {
+  text-align: center;
+  margin: 10px 8px;
+  padding: 20px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.336),
+    0 6px 20px 0px rgba(0, 0, 0, 0.055);
+  height: 70vh;
+  overflow: visible;
+}
+.wishlist-ph #scroll-v {
+  height: 50vh;
+  overflow: scroll;
+}
 
 @media only screen and (max-width: 750px) {
-    
-
-.pc-view{
+  .pc-view {
     display: none;
-}
-
-.ph-view{
-    display:block;
-}
-
-
-
   }
+
+  .ph-view {
+    display: block;
+  }
+}

@@ -1,114 +1,428 @@
  <!-- !Code By Silent_Coder AKA SilentxKnight -->
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#00f2ff" />
-    <title>Hi!| Fund Manager</title>
-
-    <!-- *css files -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-
-
-    <link rel="stylesheet" href="css/style.css" />
-
-    <!-- *firebase codesnippet -->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-     <!-- *firebase SDKs -->
-
-    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     
-
-
-
-    <!-- *firebase UI -->
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-
-    <script>
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      var firebaseConfig = {
-        apiKey: "AIzaSyB8b8vfupnHf20LEuZhQxYbhcfWBj5Qr0E",
-        authDomain: "fund-manager-fcee0.firebaseapp.com",
-        projectId: "fund-manager-fcee0",
-        storageBucket: "fund-manager-fcee0.appspot.com",
-        messagingSenderId: "665599068246",
-        appId: "1:665599068246:web:2726173509e25b443993f7",
-        measurementId: "G-909N6TSJ1N",
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-    </script>
-    <!-- *end -->
-
-
-    <!--  *checking user logged in or not -->
-      <script>
-        firebase.auth().onAuthStateChanged(firebaseuser=>{
-    if(firebaseuser){
-        // document.getElementsByTagName("body")[0].style.display="block";
-      console.log(firebaseUser);
-      window.location.assign('/pages/mainApp.html');
+    <!-- css files -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" >
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" ></script>
     
-    }else{
-        console.log('not logged in');
-        // ?redirecting user to sign in form
-        window.location.assign('/pages/mainApp.html')
-        // window.location.href="/pages/signinForm.html";
-      }
-
-    });
-      </script>
+    <link rel="stylesheet" href="css/style.css">
 
 
+    <!-- firebase UI -->
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
     <!-- end -->
-
-
-
-
-
-
-    <!-- *js files -->
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    ></script>
-
-
-
-    <script src="js/app.js" defer></script>
     
-  </head>
 
-  <body>
-    <button id="signout" class="btn btn-danger" onclick="googleSignOut()">SignOut</button> 
+</head>
 
 
+<body>
+    
+    <div class="loginWays" id="loginWays">
+        <h1>Hello</h1>
+        <!-- The surrounding HTML is left untouched by FirebaseUI.
+     Your app may use that space for branding, controls and other customizations.-->
+     <!-- <h1>Welcome to My Awesome App</h1> -->
+     <div id="firebaseui-auth-container"></div>
+     <div id="loader">Loading...</div>
+    </div>
+
+    <!-- <div class="logoutWays" id="logoutWays">
+        <button class="btn btn-danger" onclick="googleSignOut()">Signout</button>
+    </div> -->
 
 
 
+
+
+
+    <div class="contentWeb" id="contentWeb">
+    
+        <!-- !desktop view -->
+        <!-- <div class="pc-view">
+            <div class="branding">
+                Fund Manager
+            </div>
+    
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="jumbotron dash-menu">
+                        <h2 class="text-center white-box"><span>Jhon Leo</span></h2>
+                        <hr>
+                        <ol>
+                            <li>My Account</li>
+                            <li>About Us</li>
+                            <li>Contact Us</li>
+                            <li>Logout</li>
+                        </ol>
+    
+                        <img src="images/download.png" alt="">
+    
+                    </div>
+                </div>
+    
+                <div class="col-sm-9">
+    
+    
+                    <div class="jumbotron dash-options">
+    
+                        <div class="jumbtron">
+                            <div class="row main-dash">
+                                <div class="col-sm-6 Tfunds " style="background-color: aqua;">
+                                    <h3>Total Funds: 10k </h3>
+                                    <button class="btn btn-primary">+ Add Funds</button>
+                                </div>
+    
+                                <div class="col-sm-3 Sfunds" style="background-color: blueviolet;">
+                                    <h3>Savings: 8k</h3>
+                                    <button class="btn btn-success">+ Add More</button>
+                                </div>
+    
+                                <div class="col-sm-3 Efunds" style="background-color: rgb(43, 219, 152);">
+                                    <h3>Expenses: 2k</h3>
+                                    <button class="btn btn-danger">+ Add More</button>
+                                </div>
+    
+                            </div>
+                        </div>
+                        <br>
+    
+                        <div class="row" style="background-color: rgb(248, 250, 252) !important;">
+    
+                            <div class="col-sm-6">
+                                <div class="jumbotron" style="padding: 10px; text-align: center;">
+                                    <h5>-:Expenses History:-</h5>
+                                    <p style="text-align: justify;">Lorem, ipsum dolor sit amet consectetur adipisicing
+                                        elit. Obcaecati molestiae ad nobis nam modi molestias temporibus, dolore veniam
+                                        laboriosam in quos laborum praesentium eligendi earum rem, enim cumque sint
+                                        voluptate.</p>
+                                    <hr>
+                                    <butlton class="btn btn-primary ">+ Add External</button>
+                                </div>
+                            </div>
+    
+                            <div class="col-sm-6">
+                                <div class="jumbotron " style="padding: 10px;text-align: center;">
+                                    <h5>-:Wishlist:-</h5>
+                                    <p style="text-align: justify;">Lorem, ipsum dolor sit amet consectetur adipisicing
+                                        elit. Obcaecati molestiae ad nobis nam modi molestias temporibus, dolore veniam
+                                        laboriosam in quos laborum praesentium eligendi earum rem, enim cumque sint
+                                        voluptate.</p>
+                                    <hr>
+                                    <butlton class="btn btn-primary ">+ Add Items</button>
+    
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        <div class="jumbotron">
+                            <h2>More Comming Soon!</h2>
+                        </div>
+    
+    
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- !end -->
+    
+    
+        <!-- *testing area -->
+        <!-- <h2> Area For testing</h2> -->
+    
+    
+        <!-- ends -->
+        <!-- <button class="btn btn-danger"  id="signout" onclick="googleSignOut()">Sign Out</button> -->
+    
+        <!-- !phone view -->
+        <div class="ph-view">
+    
+    
+        <!-- *modal elements -->
+    
+    
+            <!-- ?add funds modal -->
+                <!-- Modal -->
+                <div class="modal fade" id="add-funds-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header ">
+                        <h5 class="modal-title text-center" id="exampleModalLabel">Edit Funds</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        <!--* increase fund -->
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Add Funds:<span class="text-success h4" >+</span>  </span>
+                                <input type="number" id="addFunds" class="form-control" placeholder="Amount"
+                                value="0" 
+                                required aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                        <!--* Decrease fund     -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Reduce Funds:<span class="text-danger h4" >-</span>  </span>
+                            <input type="number" id="reduceFunds" class="form-control" placeholder="" 
+                            value="0" aria-label="Username"
+                            required aria-describedby="basic-addon1">
+                        </div>
+    
+                        Please use it with concern!
+                        <!-- Hello There! Content coming soon! -->
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" id="saveFundsData" class="btn btn-primary" type="submit">Save</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            <!-- ?end      -->
+    
+            <!-- ?add Savings modal -->
+                <div class="modal fade" id="add-savings-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Savings</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                         Hello There! Content coming soon!
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+             <!-- ?end      -->
+    
+    
+            <!-- ?add Expenses modal -->
+                <div class="modal fade" id="add-expenses-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Expenses</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            Hello There! Content coming soon!
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            <!-- ?end      -->
+            <!-- ?add Expenses History modal -->
+                <div class="modal fade" id="add-expensesHistory-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Expenses History</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            Hello There! Content coming soon!
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            <!-- ?end      -->     
+    
+            <!-- ?add Wish modal -->
+                <div class="modal fade" id="add-wish-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Wishes</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            Hello There! Content coming soon!
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        
+           <!-- *end      -->              
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <!-- *end          -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+            <!-- *side-nav-menu -->
+            <div class="side-nav-contents" id="side-nav-contents">
+    
+            <div style="text-align: center; margin-bottom: 30px; margin-top: -40px;">    <img class="profile-image" id="profile-image"  src="" alt=""></div>
+    
+    
+                <a href="javascript:void(0)" id="close-btn" class="close-btn">&times;</a>
+    
+               
+                <a href="#" class="white-box" style="text-align: center; margin: 5px;"> <span class="text-center white-box " id="userName"
+                        style="color: #000;">   Jhon Leo </span>😎</a>
+                <a href="#">My Account</a>
+                <a href="#">About</a>
+                <button class="btn btn-danger" id="signout" onclick="googleSignOut()">Sign Out</button>
+    
+    
+                
+    
+            </div>
+            <!-- end -->
+    
+    
+            <!-- *Navigation -->
+            <nav class="nav-bar">
+    
+                <div style="display: inline-flex; float: left; font-size: 22px;"> <span id="side-menu">&#9776;</span>
+                </div>
+    
+    
+                <div style="display: inline; text-align:center ;" id="brand">
+                    <a href="#"><span>Fund Manager</span> </a>
+                </div>
+            </nav>
+            <!-- end -->
+    
+            <div class="Tfunds-ph">
+                <h3 >Total Funds: <span id="total-funds">10k</span>/- </h3>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#add-funds-modal" id="btn-add-funds">+ Add Funds</button>
+            </div>
+    
+            <div class="Sfunds-ph">
+                <h3>Savings: <span id="savings">8k</span>/- </h3>
+                <button class="btn btn-success" data-toggle="modal" data-target="#add-savings-modal" id="btn-add-savings">+ Add Savings</button>
+            </div>
+    
+            <div class="Efunds-ph">
+                <h3>Expenses: <span id="expenses">2k</span>/- </h3>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#add-expenses-modal" id="btn-add-expenses">+ Add More</button>
+            </div>
+            <br>
+            <div class="jumbotron expense-history-ph">
+                <h5>-:Expenses History:-</h5>
+                <!-- <p style="text-align: justify;"> -->
+                <div id="scroll-v">
+    
+                    <ul class="list-group" id="list-group">
+                        <!-- <li class="list-group-item" id="expense-title-list"><span id="expense-title"></span> Dapibus ac facilisis in</li> -->
+                      
+                        
+                        <li class="list-group-item list-group-item-primary" id="">This is a primary list group item</li>
+                        <li class="list-group-item list-group-item-secondary">This is a secondary list group item</li>
+                        <li class="list-group-item list-group-item-success">This is a success list group item</li>
+                        <li class="list-group-item list-group-item-danger">This is a danger list group item</li>
+                        <li class="list-group-item list-group-item-warning">This is a warning list group item</li>
+                        <li class="list-group-item list-group-item-info">This is a info list group item</li>
+                        <li class="list-group-item list-group-item-light">This is a light list group item</li>
+                        <li class="list-group-item list-group-item-dark">This is a dark list group item</li>
+                      </ul>
+    
+    
+                </div>
+                <!-- </p> -->
+                <hr>
+                <butlton class="btn btn-danger " data-toggle="modal" data-target="#add-expensesHistory-modal" id="btn-add-expensesHistory">+ Add External</button>
+            </div>
+    
+            <div class="jumbotron wishlist-ph">
+                <h5>-:Wishlist:-</h5>
+                <div id="scroll-v">
+    
+                    <ul class="list-group "  id="list-group-wishes">
+                        <li class="list-group-item" >Testing</li>
+                      
+                        
+                        <li class="list-group-item list-group-item-primary">This is a primary list group item</li>
+                        <li class="list-group-item list-group-item-secondary">This is a secondary list group item</li>
+                        <li class="list-group-item list-group-item-success">This is a success list group item</li>
+                        <li class="list-group-item list-group-item-danger">This is a danger list group item</li>
+                        <li class="list-group-item list-group-item-warning">This is a warning list group item</li>
+                        <li class="list-group-item list-group-item-info">This is a info list group item</li>
+                        <li class="list-group-item list-group-item-light">This is a light list group item</li>
+                        <li class="list-group-item list-group-item-dark">This is a dark list group item</li>
+                      </ul>
+                </div>
+    
+    
+    
+    
+                <hr>
+                <butlton class="btn btn-success "  data-toggle="modal" data-target="#add-wish-modal" id="btn-add-wish">+ Add Items</button>
+            </div>
+    
+            <div class="jumbotron">
+                <h2>More Comming Soon!</h2>
+            </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        </div>
+        <!-- !end -->
+    </div>
 
 
 
@@ -125,9 +439,64 @@
 
 
     <footer style="background-color: #000; padding: 20px; text-align: center;">
-       <h4 style="background-color: #000; color: #fff; font-size: 16px;">All &#169; Copyrights Reserved To <br> <span style="color: red;"><strong>Fund Manager</strong></span></h2>
+        <h4 style="background-color: #000; color: #fff; font-size: 16px;">All &#169; Copyrights Reserved To <br> <span
+                style="color: red;"><strong>Fund Manager</strong></span></h2>
     </footer>
+     
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+        
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+        <script>
+          // Your web app's Firebase configuration
+	         var firebaseConfig = {
+	        apiKey: "AIzaSyB8b8vfupnHf20LEuZhQxYbhcfWBj5Qr0E",
+	        authDomain: "fund-manager-fcee0.firebaseapp.com",
+	        projectId: "fund-manager-fcee0",
+	        storageBucket: "fund-manager-fcee0.appspot.com",
+	        messagingSenderId: "665599068246",
+	        appId: "1:665599068246:web:2726173509e25b443993f7",
+	        measurementId: "G-909N6TSJ1N",
+	      };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          const auth   = firebase.auth();
+          
+        </script>
 
 
-  </body>
+
+    <script>
+        // *getting all elements
+
+const sideMenuBtn= document.getElementById("side-menu") ;
+const sidenavContents = document.getElementById("side-nav-contents");
+const closeBtn = document.getElementById("close-btn");
+
+
+
+
+
+sideMenuBtn.addEventListener("click",function(){
+    // console.log('lol');
+    sidenavContents.style.width= "90vw";
+ });
+ 
+ closeBtn.addEventListener("click", (e)=>{
+     sidenavContents.style.width="0"
+ })
+
+    </script>
+
+
+    <script src="scripts/auth.js"></script>    
+    <script src="scripts/app.js"></script>
+
+</body>
 </html>
