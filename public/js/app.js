@@ -16,7 +16,22 @@ var uiConfig = {
         // User successfully signed in.
         // Return type determines whether we continue the redirect automatically
         // or whether we leave that to developer to handle.
-        return true;
+        // redirectUrl="/pages/mainApp.html";
+        // if(authResult.additionalUserInfo.isNewUser){
+        //   console.log(authResult.additionalUserInfo.isNewUser);
+        //   console.log("new User");
+        //   createUser();
+
+        // }else{
+
+        //   console.log("old user");
+        //   showUserData();
+        //   showUser();
+        // }
+
+
+
+        return false;
       },
       uiShown: function() {
         // The widget is rendered.
@@ -85,37 +100,31 @@ ui.start('#firebaseui-auth-container', uiConfig);
 
 // *manual login handler
 
-var signin = document.getElementById("signin");
-var signout =document.getElementById("signout");
+// var signin = document.getElementById("signin");
+// var signout =document.getElementById("signout");
 
 //? signin Method
-googleSignin = ()=>{
-    firebase.auth().signInWithPopup(provider).then(function(result){
-        console.log(result);
-            console.log("Logged in");
-    }).catch(function(err){
-        console.log(err);
-        console.log("Failed!");
-    })
-};
+// googleSignin = ()=>{
+//     firebase.auth().signInWithPopup(provider).then(function(result){
+//         console.log(result);
+//             console.log("Logged in");
+//     }).catch(function(err){
+//         console.log(err);
+//         console.log("Failed!");
+//     })
+// };
 
 //? signOut Menthod
-googleSignOut = ()=>{
-    firebase.auth().signOut().then(() => {
-        // Sign-out successful.
-        console.log('logouty');
-      }).catch((error) => {
-        // An error happened.
-      });
-}
+// googleSignOut = ()=>{
+//     firebase.auth().signOut().then(() => {
+//         // Sign-out successful.
+//         console.log('logouty');
+//       }).catch((error) => {
+//         // An error happened.
+//       });
+// }
 
-// end
-
-
-
-
-
-
+//? end
 
 
 

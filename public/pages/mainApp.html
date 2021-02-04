@@ -9,12 +9,11 @@
 
     <!-- *css files -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-
-
     <link rel="stylesheet" href="../css/style.css" />
+
+
+
 
     <!-- *firebase codesnippet -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -27,11 +26,20 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
+    <!-- *end -->
 
 
+    <!-- *firebase UI -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"
+    />
+
+    <!-- *end -->
 
 
     <script>
@@ -65,49 +73,7 @@
     <script src="../js/sidenav.js" defer></script>
     <script src="../js/database.js" defer></script>
 
-    <!--  *checking user logged in or not -->
-    <script>
-
-        
-
-        firebase.auth().onAuthStateChanged(firebaseuser => {
-            
-            if (firebaseuser) {
-                // document.getElementsByTagName("body")[0].style.display="block";
-                // if(firebaseuser.isNewUser){
-                //     showUserData();
-                // }else{
-                //     createUserData();
-                    
-                //     console.log(firebaseuser.additionalUserInfo);
-
-                // }
-               
-                showUserData()
-              
-
-                // * commenting out or it will resulting as a loop
-                //   window.location.href="/pages/mainApp.html";
-
-
-            } else {
-                console.log('not logged in');
-
-                // ?redirecting user to sign in form
-
-                window.location.href = "/pages/signinForm.html";
-
-
-            }
-
-        });
-        
-            
-
-        </script>
-
-
-    <!-- end -->
+      
 
 
 </head>
@@ -115,6 +81,23 @@
 <body>
     <!-- <button id="signout" onclick="googleSignOut()">SignOut</button>  -->
 
+
+  <!-- *login UI --> 
+    <div class="loginWay" id="loginWay">
+      <div id="firebaseui-auth-container"></div>
+      <div id="loader">Loading...</div>
+    </div>
+
+
+
+
+  <!-- *end -->
+
+
+
+
+<div class="contentWeb" id="contentWeb">
+    
     <!-- !desktop view -->
     <div class="pc-view">
         <div class="branding">
@@ -491,13 +474,46 @@
 
     </div>
     <!-- !end -->
+</div>
+
+
+
+
+
+
+
 
     <footer style="background-color: #000; padding: 20px; text-align: center;">
         <h4 style="background-color: #000; color: #fff; font-size: 16px;">All &#169; Copyrights Reserved To <br> <span
                 style="color: red;"><strong>Fund Manager</strong></span></h2>
     </footer>
 
+<!--  *checking user logged in or not -->
+<script >
+    var content = document.getElementById('contentWeb');
+    var loginWay = document.getElementById('loginWay');
 
+    loginWay.style.display="block"
+    content.style.display="none";
+
+
+  firebase.auth().onAuthStateChanged(firebaseuser=>{
+if(firebaseuser){
+  // document.getElementsByTagName("body")[0].style.display="block";
+// console.log(firebaseUser);
+    content.style.display="block";
+    loginWay.style.display="none"
+}else{
+  console.log('not logged in');
+  // document.getElementById('#contentWeb').style.display="none";
+  // ?redirecting user to sign in form
+
+  // window.location.href="/pages/signinForm.html";
+}
+
+});
+</script>
+<!--* end -->
 </body>
 
 </html>

@@ -65,19 +65,14 @@
     if(firebaseuser){
         // document.getElementsByTagName("body")[0].style.display="block";
       console.log(firebaseUser);
-
-      window.location.href="/pages/mainApp.html";
-
-        
+      window.location.assign('/pages/mainApp.html');
+    
     }else{
         console.log('not logged in');
-        
         // ?redirecting user to sign in form
-
-        window.location.href="/pages/signinForm.html";
-    
-    
-    }
+        window.location.assign('/pages/mainApp.html')
+        // window.location.href="/pages/signinForm.html";
+      }
 
     });
       </script>

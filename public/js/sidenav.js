@@ -30,7 +30,8 @@ sideMenuBtn.addEventListener("click",function(){
         .signOut()
         .then(() => {
         // Sign-out successful.
-        console.log("logouty");
+        console.log("logout");
+        window.location.reload();
         })
         .catch((error) => {
         // An error happened.

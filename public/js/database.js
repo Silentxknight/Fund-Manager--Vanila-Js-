@@ -66,7 +66,7 @@ createUserData=()=>{
 
 
 
-showUserData=()=>{
+ showUserData=()=>{
 
             var user = firebase.auth().currentUser;
                 var userInfo;
@@ -218,4 +218,3 @@ showUserData=()=>{
 WishList.addEventListener('click',function(){
     console.log("workings");
 });
-
