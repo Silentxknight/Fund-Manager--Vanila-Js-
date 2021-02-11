@@ -11,9 +11,19 @@ var Expenses = document.getElementById("expenses");
 var ExpensesList = document.getElementById("list-group");
 var WishList = document.getElementById("list-group-wishes");
 var BtnAddFunds = document.getElementById("btn-add-funds");
+
+
 var addFundsData = document.getElementById("addFunds");
 var reduceFundsData = document.getElementById("reduceFunds");
+var addSavingsData = document.getElementById("addSavings");
+var reduceSavingsData = document.getElementById("reduceSavings");
+var addExpensesData = document.getElementById("addExpenses");
+var reduceExpensesData = document.getElementById("reduceExpenses");
+
+
 var saveFundsData = document.getElementById("saveFundsData");
+var saveSavingsData = document.getElementById("saveSavingsData");
+var saveExpensesData= document.getElementById("saveExpensesData");
 
 console.log("codes from app,js");
 
@@ -74,7 +84,7 @@ showUserData = () => {
   // var user = firebase.auth().currentUser;
   firebase.auth().onAuthStateChanged(function (user) {
     var userInfo;
-    var totalf;
+    var totalf, totalSavings, totalExpenses;
     var newFunds = 0;
     userInfo = user;
     userId = user.uid;
@@ -95,7 +105,13 @@ showUserData = () => {
         TotalFunds.innerText = snapshot.val().TotalFunds;
         Savings.innerText = snapshot.val().Savings;
         Expenses.innerText = snapshot.val().Expenses;
+
+        // *storing value to variable 
         totalf = snapshot.val().TotalFunds;
+        totalSavings = snapshot.val().Savings;
+        totalExpenses = snapshot.val().Expenses;
+
+        
       });
 
     // *only works under this scope block
@@ -176,8 +192,18 @@ showUserData = () => {
     // ?MODAL FUNCTIONS
 
     //* Triggers
+      // trigger for editing funds
     saveFundsData.addEventListener("click", addFunds);
+      // trigger for editing savings
+    saveSavingsData.addEventListener('click', addSavings)
+      // trigger for editing expenses
+    saveExpensesData.addEventListener('click', addExpenses)
 
+
+  
+  
+    
+    
     // ?add Funds function
     function addFunds() {
       console.log(totalf);
@@ -199,24 +225,105 @@ showUserData = () => {
       console.log(newFundsFloat);
 
       // *updating  database with new values
-      database.ref("users/" + user.displayName + " " + userId).set({
+      database.ref("users/" + user.displayName + " " + userId).update({
         // Name:user.displayName,
         // Email:user.email,
         TotalFunds: newFundsFloat,
-        Savings: 0,
-        Expenses: 0,
+        // Savings: 0,
+        // Expenses: 0,
 
-        ExpensesHistory: { Food: 2000, Others: 300 },
-        WishList: { loop: 900, Food: 2000, Others: 300 },
+        // ExpensesHistory: { Food: 2000, Others: 300 },
+        // WishList: { loop: 900, Food: 2000, Others: 300 },
       });
+
+
+
+
+
     }
+
     // ?ends
+
+    // ?add Savings function
+
+    function addSavings(){
+
+      console.log("My savings: "+totalSavings);
+      var finalSavingsToAdd = 0;
+      var finalSavingsToReduce = 0;
+      finalSavingsToAdd = addFundsData.value;
+      finalSavingsToReduce = reduceFundsData.value;
+
+      // *parsing to float
+     var newSavings = parseFloat(
+        parseFloat(addSavingsData.value) +
+        parseFloat(totalSavings) -
+        parseFloat(reduceSavingsData.value)
+      );
+      console.log(newSavings);
+
+      // *updating  database with new values
+      database.ref("users/" + user.displayName + " " + userId).update({
+      // Name:user.displayName,
+      // Email:user.email,
+      // TotalFunds: 0,
+      Savings: newSavings,
+      // Expenses: 0,
+
+      // ExpensesHistory: { Food: 2000, Others: 300 },
+      // WishList: { loop: 900, Food: 2000, Others: 300 },
+    });
+
+    }
+
+
+    // ?ends
+    // ?add Expenses function
+
+    function addExpenses(){
+
+      console.log("My expenses: "+totalExpenses);
+      var finalExpensesToAdd = 0;
+      var finalExpensesToReduce = 0;
+      finalExpensesToAdd = addExpensesData.value;
+      finalExpensesToReduce = reduceExpensesData.value;
+
+      // *parsing to float
+    var newExpenses = parseFloat(
+        parseFloat(addExpensesData.value) +
+        parseFloat(totalExpenses) -
+        parseFloat(reduceExpensesData.value)
+      );
+      console.log(newExpenses);
+
+      // *updating  database with new values
+      database.ref("users/" + user.displayName + " " + userId).update({
+      // Name:user.displayName,
+      // Email:user.email,
+      // TotalFunds: 0,
+      // Savings: newExpenses,
+      Expenses: newExpenses,
+
+      // ExpensesHistory: { Food: 2000, Others: 300 },
+      // WishList: { loop: 900, Food: 2000, Others: 300 },
+    });
+
+    }
+
+
+    // ?ends
+
+
+
   });
 };
 
 // *end
 
-// *initiating method
+
+
+
+// *initiating method for showing userData
 
 showUserData();
 
